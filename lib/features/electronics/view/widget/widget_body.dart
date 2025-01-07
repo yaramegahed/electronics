@@ -9,18 +9,40 @@ class WidgetBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.brown, width: 5),
-          borderRadius: BorderRadius.circular(15)),
-      width: double.infinity, height: 500,
-      // child: Text(model.title),
-      child: CachedNetworkImage(
-        fit: BoxFit.cover,
-        imageUrl: model.image,
-        progressIndicatorBuilder: (context, url, downloadProgress) =>
-            CircularProgressIndicator(value: downloadProgress.progress),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
+    print(model.rating);
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white,
+                ),
+                borderRadius: BorderRadius.circular(15)),
+            width: double.infinity, height: 200,
+            // child: Text(model.title),
+            child: CachedNetworkImage(
+              fit: BoxFit.fill,
+              imageUrl: model.image,
+              progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  CircularProgressIndicator(value: downloadProgress.progress),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            model.title,
+            maxLines: 1,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Text(
+            model.rating.toString(),
+            maxLines: 1,
+          ),
+        ],
       ),
     );
   }

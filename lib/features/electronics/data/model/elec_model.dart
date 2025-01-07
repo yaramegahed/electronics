@@ -8,11 +8,11 @@ class ProductTestModel {
 
   ProductTestModel(
       {required this.category,
-      required this.id,
-      required this.title,
-      required this.rating,
-      required this.description,
-      required this.image});
+        required this.id,
+        required this.title,
+        required this.rating,
+        required this.description,
+        required this.image});
 
   factory ProductTestModel.fromJson(Map<String, dynamic> data) {
     return ProductTestModel(
@@ -20,7 +20,7 @@ class ProductTestModel {
         id: data["id"],
         title: data["title"],
         description: data["description"],
-        image: 'image',
+        image: data['image'],
         rating: Rating.fromJson(data["rating"]));
   }
 }
@@ -32,18 +32,6 @@ class Rating {
   Rating({required this.rate, required this.count});
 
   factory Rating.fromJson(Map<String, dynamic> data) {
-    return Rating(
-        rate: _parseJsonToDouble(data["rate"]),
-        count: _parseJsonToDouble(data["count"]));
-  }
-}
-
-double _parseJsonToDouble(dynamic value) {
-  if (value is String) {
-    return double.tryParse(value) ?? 0.0;
-  } else if (value is num) {
-    return value.toDouble();
-  } else {
-    return 0.0;
+    return Rating(rate: data["rate"], count: data["count"]);
   }
 }
