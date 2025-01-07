@@ -11,7 +11,7 @@ class WidgetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const DetailsScreen(),));},
+      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(model: model,),));},
       child: Container(
         padding: const EdgeInsets.only(top: 10,left: 10,right: 10),
         decoration: BoxDecoration(
@@ -61,11 +61,13 @@ class WidgetBody extends StatelessWidget {
                     Icons.star,
                     color: Colors.yellow,
                   ),
-                  Spacer(),
-                  IconButton(
-                    color: Colors.red,
-                    onPressed: () {},
-                    icon: Icon(Icons.favorite),
+                  const Spacer(),
+                  SizedBox(
+                    child: IconButton(
+                      color: Colors.red,
+                      onPressed: () {},
+                      icon: Icon(Icons.favorite),
+                    ),
                   ),
                 ],
               ),

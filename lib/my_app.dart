@@ -1,4 +1,5 @@
 
+import 'package:electronics/features/electronics/layout/layout.dart';
 import 'package:flutter/material.dart';
 
 import 'features/electronics/view/electronics_screen/screen.dart';
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
-      home: Screen(),
+      home: Layout(),
 
     );
   }}
