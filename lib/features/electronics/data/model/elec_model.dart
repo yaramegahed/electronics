@@ -26,8 +26,8 @@ class ProductTestModel {
 }
 
 class Rating {
-  final double rate;
-  final double count;
+  final num rate;
+  final num count;
 
   Rating({required this.rate, required this.count});
 

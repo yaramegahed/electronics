@@ -14,24 +14,27 @@ class Screen extends StatelessWidget {
     return BlocProvider(
       create: (context) => ElectronicsCubit()..getDataCubit(),
       child: Scaffold(
-        appBar: appBar(),
-        body: BlocBuilder<ElectronicsCubit, ElectronicsState>(
-          builder: (context, state) {
-            if (state is ElectronicsSuccessState) {
-              return GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 0.7,
-                children: List.generate(state.product.length, (index) {
-                  return WidgetBody(model: state.product[index]);
-                }),
-              );
-            } else {
-              CircularProgressIndicator();
-            }
-            return Text("data");
-          },
+        appBar: appBar(title: 'Shop'),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: BlocBuilder<ElectronicsCubit, ElectronicsState>(
+            builder: (context, state) {
+              if (state is ElectronicsSuccessState) {
+                return GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 15,
+                  crossAxisSpacing: 15,
+                  childAspectRatio: 0.7,
+                  children: List.generate(state.product.length, (index) {
+                    return WidgetBody(model: state.product[index]);
+                  }),
+                );
+              } else {
+                const CircularProgressIndicator();
+              }
+              return const Text("error");
+            },
+          ),
         ),
       ),
     );
